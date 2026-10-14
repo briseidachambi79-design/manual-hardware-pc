@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#4f46e5" />
+  <meta name="description" content="Manual interactivo de hardware de PC: CPU, RAM, zócalos, PSU, enfriamiento y buenas prácticas." />
+  <title>Manual de Hardware de PC</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">🧩</span>
+        <span class="brand-text">
+          <strong>Manual Hardware PC</strong>
+          <small>Componentes, zócalos y buenas prácticas</small>
+        </span>
+      </div>
+      <nav class="site-nav" aria-label="Navegación">
+        <a href="#intro">Intro</a>
+        <a href="#componentes">Componentes</a>
+        <a href="#cpu">CPU/Zócalo</a>
+        <a href="#ram">RAM</a>
+        <a href="#psu">PSU</a>
+        <a href="#enfriamiento">Enfriamiento</a>
+        <a href="#quiz">Quiz</a>
+      </nav>
+      <button id="installBtn" class="btn btn-ghost" hidden>Instalar</button>
+      <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="badge">Manual interactivo</span>
+        <h1>Identifica el hardware de tu PC</h1>
+        <p class="hero-sub">
+          Aprende a reconocer <strong>CPU, RAM, chipset, zócalos, PSU y enfriamiento</strong>,
+          con tablas de referencia, buenas prácticas de ensamblaje y quiz final.
+        </p>
+        <div class="hero-cta">
+          <a href="#componentes" class="btn btn-primary">Ver componentes</a>
+          <a href="#quiz" class="btn btn-ghost">Hacer quiz</a>
+        </div>
+      </div>
+      <div class="hero-illu" aria-hidden="true">
+        <div class="board">
+          <div class="chip lga"><span>CPU</span></div>
+          <div class="chip ram"><span>RAM</span></div>
+          <div class="chip nvme"><span>NVMe</span></div>
+          <div class="chip psu"><span>PSU</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="intro" class="section">
+    <div class="container">
+      <h2>1. Introducción</h2>
+      <p>
+        El hardware del PC está formado por componentes que se comunican a través de buses y buses de memoria.
+        Conocer cada pieza y su <strong>compatibilidad</strong> evita daños, ahorrás tiempo y presupuesto.
+      </p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Primera regla</h3>
+          <ul>
+            <li>Desconecta la corriente y mantén el botón de encendido presionado (descarga residual).</li>
+            <li>Usa pulsera antiestática o toca una parte metálica del chassis.</li>
+            <li>Trabaja sobre una superficie antiestática.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Compatibilidad clave</h3>
+          <ul>
+            <li><strong>CPU ↔ Zócalo</strong> (LGA/PGA) y chipset.</li>
+            <li><strong>RAM ↔ Generación</strong> (DDR4/DDR5) y velocidad soportada.</li>
+            <li><strong>GPU/Periféricos ↔ Ranura</strong> (PCIe x16, x4, M.2).</li>
+            <li><strong>PSU ↔ Potencia y conectores</strong> (24-pin, 8-pin EPS, PCIe).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="componentes" class="section section-alt">
+    <div class="container">
+      <h2>2. Componentes principales</h2>
+      <div class="grid-3">
+        <div class="card comp">
+          <div class="comp-icon">🧠</div>
+          <h3>CPU</h3>
+          <p>Procesador. Define el z�calo y el chipset.</p>
+        </div>
+        <div class="card comp">
+          <div class="comp-icon">🟩</div>
+          <h3>Placa base</h3>
+          <p>Interconecta todo: CPU, RAM, PCIe, SATA, M.2, red.</p>
+        </div>
+        <div class="card comp">
+          <div class="comp-icon">⚡</div>
+          <h3>RAM</h3>
+          <p>Memoria volátil. DDR4 o DDR5 según placa.</p>
+        </div>
+        <div class="card comp">
+          <div class="comp-icon">🎮</div>
+          <h3>GPU</h3>
+          <p>Tarjeta gráfica dedicada (PCIe x16).</p>
+        </div>
+        <div class="card comp">
+          <div class="comp-icon">💾</div>
+          <h3>Almacenamiento</h3>
+          <p>SSD NVMe (M.2) o SATA (2.5").</p>
+        </div>
+        <div class="card comp">
+          <div class="comp-icon">🔌</div>
+          <h3>PSU</h3>
+          <p>Fuente de alimentación ATX con protecciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cpu" class="section">
+    <div class="container">
+      <h2>3. CPU y zócalos</h2>
+      <p class="muted">Un procesador debe coincidir con el zócalo física y el chipset soportado.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Fabricante</th><th>Zócalo</th><th>Tipo</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td>Intel</td><td>LGA1700</td><td>LGA</td><td>12.ª/13.ª/14.ª gen Core. Zócalo con pines en la placa.</td></tr>
+            <tr><td>Intel</td><td>LGA1200</td><td>LGA</td><td>10.ª/11.ª gen. Disipador con zócalo compatible (en general).</td></tr>
+            <tr><td>AMD</td><td>AM5</td><td>LGA</td><td>Ryzen 7000+. Soporta DDR5 y PCIe 5.0.</td></tr>
+            <tr><td>AMD</td><td>AM4</td><td>PGA</td><td>Ryzen 1000–5000. Pines en CPU; manejo con cuidado.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout info">
+        <strong>Clave:</strong> “LGA” = pines en la placa; “PGA” = pines en la CPU. No fuerces el componente: si no encaja, revisa orientación.
+      </div>
+    </div>
+  </section>
+
+  <section id="ram" class="section section-alt">
+    <div class="container">
+      <h2>4. Memoria RAM</h2>
+      <p class="muted">Las muescas del módulo indican la generación. No son intercambiables.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Generación</th><th>Muesca</th><th>Voltaje</th><th>Velocidad típica</th></tr></thead>
+          <tbody>
+            <tr><td>DDR4</td><td>Centro/izq (según módulo)</td><td>1.2 V</td><td>2133–3600 MHz+</td></tr>
+            <tr><td>DDR5</td><td>Desplazada</td><td>1.1 V</td><td>4800–6400 MHz+</td></tr>
+            <tr><td>SO-DIMM (laptop)</td><td>Más corto</td><td>Varía</td><td>Formato portátil</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warning">
+        <strong>No mezcles</strong> DDR4 con DDR5 en la misma placa (no caben ni son compatibles). Para dual channel instala en los slots indicados (A2/B2 primero).
+      </div>
+    </div>
+  </section>
+
+  <section id="psu" class="section">
+    <div class="container">
+      <h2>5. Fuente de poder (PSU)</h2>
+      <p class="muted">Elige potencia con margen (1.5–2× consumo típico) y certificación 80 Plus.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Conectores principales</h3>
+          <ul>
+            <li><strong>24-pin ATX</strong> para placa base.</li>
+            <li><strong>8-pin (4+4) EPS</strong> para CPU.</li>
+            <li><strong>6/8-pin PCIe</strong> para GPU.</li>
+            <li><strong>SATA</strong> para discos.</li>
+            <li><strong>12VHPWR</strong> en GPUs de nueva generación.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Certificaciones 80 Plus</h3>
+          <ul>
+            <li>White / Bronze / Silver / Gold / Platinum / Titanium.</li>
+            <li>Gold es un buen balance precio/eficiencia.</li>
+            <li>Modular o semi-modular facilita el cableado.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="enfriamiento" class="section section-alt">
+    <div class="container">
+      <h2>6. Enfriamiento</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Aire</h3>
+          <ul>
+            <li>Pasta térmica nueva al reinstalar.</li>
+            <li>Orientación del disipador según flujo de aire (front-to-back).</li>
+            <li>Ventiladores: entrada frontal, salida trasera/superior.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Líquido (AIO)</h3>
+          <ul>
+            <li>Radiador preferiblemente arriba o frontal.</li>
+            <li>No lo pongas si el bloqueo de la bomba no funciona.</li>
+            <li>Verifica que los tubos no toquen las aspas del ventilador.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout warning">
+        <strong>No olvides:</strong> la pasta térmica solo debe cubrir una capa fina. Exceso = peor transferencia.
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="section">
+    <div class="container">
+      <h2>7. Mini quiz</h2>
+      <div class="card quiz-card">
+        <p id="quizQuestion" class="quiz-q"></p>
+        <div id="quizOptions" class="quiz-options"></div>
+        <p id="quizFeedback" class="quiz-feedback"></p>
+        <div class="quiz-actions">
+          <button id="nextBtn" class="btn btn-primary" style="display:none;">Siguiente</button>
+          <button id="restartQuiz" class="btn btn-ghost">Reiniciar</button>
+        </div>
+        <p id="quizScore" class="quiz-score"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>8. Buenas prácticas de ensamblaje</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>✅ Sí</h3>
+          <ul>
+            <li>Instalar I/O shield antes de la placa.</li>
+            <li>Usar separadores (standoffs) en el case.</li>
+            <li>Conectar cables de alimentación hasta el tope (clic).</li>
+            <li>Verificar polaridad de ventiladores y LEDs frontales.</li>
+            <li>Probar arranque fuera del case (test de banco) si algo falla.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>❌ No</h3>
+          <ul>
+            <li>No aprietes excesivamente los tornillos (puede agrietar la placa).</li>
+            <li>No fuerces la RAM/CPU.</li>
+            <li>No dejes cables sueltos que toquen aspas.</li>
+            <li>No toques los pin headers con los dedos mojados o grasa.</li>
+            <li>No enciendas sin el cooler de CPU instalado.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container"><p>Manual de Hardware de PC · offline · sin instalación</p></div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
+    }
+  </script>
+</body>
+</html>
